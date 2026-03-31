@@ -145,9 +145,9 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   font-size: 32px; margin-bottom: 16px;
   position: relative;
 }
-.dia-circle.you { background: var(--green-soft); border: 2px solid var(--green); }
-.dia-circle.us { background: rgba(123, 140, 222, 0.15); border: 2px solid var(--lavender); }
-.dia-circle.both { background: var(--green-soft); border: 2px solid var(--green); }
+.dia-circle.you { background: var(--green-soft); border: 2px solid var(--green); color: var(--green); }
+.dia-circle.us { background: rgba(123, 140, 222, 0.15); border: 2px solid var(--lavender); color: var(--lavender); }
+.dia-circle.both { background: var(--green-soft); border: 2px solid var(--green); color: var(--green); }
 .dia-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .dia-step p { font-size: 13px; color: var(--grey); line-height: 1.5; }
 .dia-step .who-tag {
