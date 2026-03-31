@@ -59,24 +59,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Typeform submit conversion tracking
-window.addEventListener('message', function(event) {
-  if (event.origin === 'https://form.typeform.com') {
-    try {
-      const data = JSON.parse(event.data);
-      if (data.type === 'form-submit') {
-        // Facebook Pixel Lead event
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'Lead', { content_name: 'IT Consultancy Growth Assessment' });
-        }
-        // GA4 generate_lead event
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'generate_lead', {
-            event_category: 'form',
-            event_label: 'typeform_it_consultancy'
-          });
-        }
-      }
-    } catch(e) {}
-  }
-});
+// Conversion tracking is handled on the thank you page (takk.html)
+// Typeform redirects to /takk after submission, which fires Pixel Lead event and GA4 conversion
