@@ -115,7 +115,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   transition: border-color 0.3s;
 }
 .pcard:hover { border-color: rgba(0, 212, 126, 0.2); }
-.pcard .ico { font-size: 28px; margin-bottom: 16px; display: block; }
+.pcard .ico { font-size: 28px; margin-bottom: 16px; display: block; color: var(--green); }
 .pcard h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
 .pcard p { color: var(--grey); font-size: 15px; line-height: 1.7; }
 
