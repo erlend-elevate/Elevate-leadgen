@@ -62,11 +62,11 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
 .cta-micro { font-size: 13px; color: var(--grey); margin-top: 8px; }
 
 /* Trust line above Typeform */
-.tf-trust { text-align: center; margin-bottom: 20px; }
-.tf-trust p { font-size: 14px; color: var(--grey); opacity: 0.8; }
-.tf-trust .tf-trust-headline { font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--grey); opacity: 0.7; margin-bottom: 6px; }
-.tf-trust .tf-trust-stats { font-size: 13px; color: var(--grey); opacity: 0.6; }
-.tf-field-note { font-size: 12px; color: var(--grey); opacity: 0.6; text-align: center; margin-top: 12px; }
+.tf-trust { text-align: center; margin-bottom: 16px; }
+.tf-trust .tf-trust-headline { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+.tf-trust .tf-trust-stats { font-size: 13px; color: var(--grey); display: flex; gap: 6px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.tf-trust .tf-trust-stats .sep { width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+.tf-field-note { font-size: 12px; color: var(--grey); opacity: 0.7; text-align: center; margin-top: 12px; }
 
 /* ====== BUTTONS ====== */
 .btn {
@@ -398,7 +398,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   background: var(--card); border: 1px solid var(--border); border-radius: 20px;
   padding: 8px; min-height: 500px;
   box-shadow: 0 0 40px rgba(0, 212, 126, 0.06);
-  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
 }
 /* ====== CLOSING ====== */
 .clo {
