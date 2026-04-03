@@ -4,19 +4,36 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 
-// Sticky CTA bar - appears after scrolling past hero
+// Sticky CTA bar - appears after scrolling past hero, hides near form
 const stickyBar = document.getElementById('stickyBar');
 const heroSection = document.getElementById('hero');
+const formSection = document.getElementById('form');
+let heroVisible = true;
+let formVisible = false;
+
+function updateStickyBar() {
+  if (heroVisible || formVisible) {
+    stickyBar.classList.remove('visible');
+    if (formVisible) stickyBar.classList.add('hide-sticky');
+  } else {
+    stickyBar.classList.remove('hide-sticky');
+    stickyBar.classList.add('visible');
+  }
+}
+
 const stickyObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) {
-      stickyBar.classList.add('visible');
-    } else {
-      stickyBar.classList.remove('visible');
-    }
-  });
+  entries.forEach(e => { heroVisible = e.isIntersecting; });
+  updateStickyBar();
 }, { threshold: 0 });
 stickyObs.observe(heroSection);
+
+if (formSection) {
+  const formObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { formVisible = e.isIntersecting; });
+    updateStickyBar();
+  }, { threshold: 0.1 });
+  formObs.observe(formSection);
+}
 
 // Counter animation
 let started = false;

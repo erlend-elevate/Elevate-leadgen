@@ -55,6 +55,18 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   box-shadow: 0 2px 16px var(--green-glow);
 }
 .sticky-btn:hover { background: var(--green-hover); transform: translateY(-1px); }
+.sticky-bar.hide-sticky { transform: translateY(-100%) !important; }
+
+/* CTA microcopy */
+.cta-wrap { display: flex; flex-direction: column; align-items: center; }
+.cta-micro { font-size: 13px; color: var(--grey); margin-top: 8px; }
+
+/* Trust line above Typeform */
+.tf-trust { text-align: center; margin-bottom: 20px; }
+.tf-trust p { font-size: 14px; color: var(--grey); opacity: 0.8; }
+.tf-trust .tf-trust-headline { font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--grey); opacity: 0.7; margin-bottom: 6px; }
+.tf-trust .tf-trust-stats { font-size: 13px; color: var(--grey); opacity: 0.6; }
+.tf-field-note { font-size: 12px; color: var(--grey); opacity: 0.6; text-align: center; margin-top: 12px; }
 
 /* ====== BUTTONS ====== */
 .btn {
@@ -388,14 +400,6 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   box-shadow: 0 0 40px rgba(0, 212, 126, 0.06);
   display: flex; align-items: center; justify-content: center;
 }
-.tfph { text-align: center; padding: 40px; }
-.tfph .ic { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
-.tfph p { color: var(--grey); font-size: 14px; line-height: 1.6; }
-.tfph code {
-  display: inline-block; margin-top: 12px; padding: 6px 16px; border-radius: 6px;
-  background: var(--green-soft); color: var(--green); font-size: 13px;
-}
-
 /* ====== CLOSING ====== */
 .clo {
   padding: 120px 0; text-align: center;
@@ -435,6 +439,23 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   .foot-in { flex-direction: column; text-align: center; }
   .wfor-grid { grid-template-columns: 1fr; }
   .sticky-text { display: none; }
+  .sticky-bar {
+    top: auto; bottom: 0;
+    transform: translateY(100%);
+    border-bottom: none;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+  }
+  .sticky-bar.visible { transform: translateY(0); }
+  .sticky-bar.hide-sticky { transform: translateY(100%) !important; }
+  .sticky-inner { flex-wrap: wrap; gap: 8px; }
+  .sticky-logo { display: none; }
+  .sticky-btn {
+    width: 100%; justify-content: center;
+    min-height: 48px; font-size: 16px;
+    padding: 14px 24px; border-radius: 8px;
+  }
   .diagram-flow { flex-direction: column; gap: 0; }
   .dia-arrow { transform: rotate(90deg); margin: 8px 0; align-self: center; }
   .dia-step { min-width: auto; width: 100%; }
