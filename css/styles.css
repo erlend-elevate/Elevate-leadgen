@@ -131,6 +131,13 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
 .pcard h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
 .pcard p { color: var(--grey); font-size: 15px; line-height: 1.7; }
 
+/* ====== BURNED BEFORE ====== */
+.burned { padding: 120px 0; background: var(--bg2); text-align: center; }
+.burned-in { max-width: 700px; margin: 0 auto; }
+.burned h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; margin-bottom: 32px; }
+.burned p { color: var(--grey); font-size: 18px; line-height: 1.8; margin-bottom: 20px; }
+.burned p:last-child { margin-bottom: 0; }
+
 /* ====== BRIDGE ====== */
 .bridge { padding: 120px 0; background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); text-align: center; }
 .bridge-in { max-width: 700px; margin: 0 auto; }
