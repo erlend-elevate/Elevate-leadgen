@@ -64,8 +64,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
 /* Trust line above Typeform */
 .tf-trust { text-align: center; margin-bottom: 16px; }
 .tf-trust .tf-trust-headline { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
-.tf-trust .tf-trust-stats { font-size: 13px; color: var(--grey); display: flex; gap: 6px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.tf-trust .tf-trust-stats .sep { width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+.tf-trust .tf-trust-stats { font-size: 13px; color: var(--grey); display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.tf-trust .tf-trust-stats .sep { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
 .tf-field-note { font-size: 12px; color: var(--grey); opacity: 0.7; text-align: center; margin-top: 12px; }
 
 /* ====== BUTTONS ====== */
@@ -109,7 +109,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
 .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
 .hero h1 em { font-style: normal; color: var(--green); }
 .hero-p { font-size: clamp(16px, 2vw, 20px); color: var(--grey); max-width: 620px; margin: 0 auto 40px; line-height: 1.7; }
-.btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.btns { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 48px; }
 .bar { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--border); }
 .bar span { font-size: 14px; color: var(--grey); display: flex; align-items: center; gap: 8px; }
 .bar span::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
@@ -258,7 +258,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
 .cases { padding: 120px 0; background: var(--bg2); }
 .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .case-card {
-  background: var(--card); border: 1px solid var(--border);
+  background: var(--card); border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px; padding: 36px;
   display: flex; flex-direction: column;
   transition: border-color 0.3s;
@@ -367,7 +367,8 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   .cases-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid { grid-template-columns: 1fr; gap: 20px; }
+  .case-card { padding: 28px; }
   .case-body .result-grid { grid-template-columns: 1fr; }
   .case-stats { gap: 16px; }
 }
@@ -466,4 +467,33 @@ body { font-family: var(--font); background: var(--bg); color: var(--white); lin
   .diagram-flow { flex-direction: column; gap: 0; }
   .dia-arrow { transform: rotate(90deg); margin: 8px 0; align-self: center; }
   .dia-step { min-width: auto; width: 100%; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 60px 0; }
+  .hero h1 { font-size: 32px; }
+  .hero-p { font-size: 16px; }
+  .tag { font-size: 11px; padding: 6px 14px; letter-spacing: 2px; }
+  .pain, .burned, .bridge, .wfor, .proc, .prf, .faq, .clo { padding: 72px 0; }
+  .cases { padding: 72px 0; }
+  .frm { padding: 72px 0; }
+  .sh { font-size: 26px; margin-bottom: 36px; }
+  .stag { font-size: 11px; letter-spacing: 2px; }
+  .pcard { padding: 24px; }
+  .pcard h3 { font-size: 18px; }
+  .burned h2, .bridge h2, .fcopy h2, .clo h2 { font-size: 26px; }
+  .burned p, .bridge p { font-size: 16px; }
+  .stp .num { font-size: 36px; }
+  .tcard { padding: 32px; }
+  .tcard blockquote { font-size: 15px; }
+  .case-card { padding: 24px; }
+  .case-num { font-size: 20px; }
+  .case-stats { gap: 12px; }
+  .wfor-card { padding: 28px; }
+  .wfor-card h3 { font-size: 18px; }
+  .fgrid { gap: 40px; }
+  .dia-circle { width: 64px; height: 64px; }
+  .dia-bottom { padding: 16px 20px; }
+  .dia-bottom p { font-size: 14px; }
+  .tf-trust .tf-trust-stats { flex-direction: column; gap: 4px; }
+  .tf-trust .tf-trust-stats .sep { display: none; }
 }
