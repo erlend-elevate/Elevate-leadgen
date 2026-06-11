@@ -17,3 +17,20 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Nevari client proposal (served at /nevari/). Keep it out of search indexes:
+# it contains commercial terms and must not be indexable.
+[[headers]]
+  for = "/nevari/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/nevari/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/nevari/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
