@@ -1,0 +1,27 @@
+# Standalone Netlify site for the Nevari x Elevate proposal.
+# This is a separate site from it.getelevateleads.com and carries NO campaign
+# pixels or analytics. When connecting in Netlify, set the site's base
+# directory to "nevari" so this config and publish dir are picked up.
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Belt-and-braces: keep the proposal out of search indexes at the edge too,
+    # in addition to the in-page <meta name="robots"> and robots.txt.
+    X-Robots-Tag = "noindex, nofollow"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
