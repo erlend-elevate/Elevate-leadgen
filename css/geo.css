@@ -110,9 +110,52 @@ a:focus-visible, summary:focus-visible {
 }
 .geo-steps p { font-size: 16px; color: var(--cream-dim); }
 
+/* Try it yourself (generic chat mock, no vendor branding) */
+.geo-chat { max-width: 480px; margin: 0 auto 30px; display: flex; flex-direction: column; gap: 12px; }
+.geo-chat-q {
+  align-self: flex-end; max-width: 85%;
+  background: var(--green-soft); border: 1px solid rgba(0, 212, 126, 0.25);
+  color: var(--cream); font-size: 15px; line-height: 1.5;
+  padding: 12px 20px; border-radius: 18px 18px 4px 18px;
+}
+.geo-chat-a {
+  align-self: flex-start; display: flex; gap: 5px;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 17px 20px; border-radius: 18px 18px 18px 4px;
+}
+.geo-chat-a span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--cream-dim);
+  animation: geo-typing 1.2s infinite ease-in-out;
+}
+.geo-chat-a span:nth-child(2) { animation-delay: 0.15s; }
+.geo-chat-a span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes geo-typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 0.9; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .geo-chat-a span { animation: none; opacity: 0.5; }
+}
+
+/* What the findings look like (report rows) */
+.geo-report { list-style: none; max-width: 680px; margin: 0 auto; border-top: 1px solid var(--border); }
+.geo-report li {
+  display: flex; align-items: baseline; gap: 18px;
+  padding: 20px 4px; border-bottom: 1px solid var(--border);
+}
+.geo-report-num {
+  font-family: var(--display); font-weight: 600; font-size: 22px;
+  color: var(--green); line-height: 1; flex-shrink: 0; min-width: 26px;
+}
+.geo-report li p { font-size: 16px; color: var(--cream-dim); }
+.geo-report li strong { color: var(--cream); font-weight: 600; }
+.geo-report-note { text-align: center; font-size: 14px; color: var(--cream-dim); margin-top: 22px; }
+
 /* Narrow centered body sections */
 .geo-narrow { max-width: 620px; margin: 0 auto; text-align: center; }
 .geo-narrow p { font-size: 17px; color: var(--cream-dim); }
+.geo-narrow p + p { margin-top: 14px; }
 
 /* About divider section */
 .geo-about { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
