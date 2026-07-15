@@ -59,6 +59,26 @@ GA4 events fired:
 - **page_view** automatically
 - **generate_lead** on Typeform submit (via `js/main.js`)
 
+## GEO Audit Funnel (`/geo-audit`)
+
+Separate funnel for the Meta campaign "LEADS I ENGLAND I IT I v.3", adset GEO-audit. Three pages, styled by `css/geo.css` (V2 editorial system: Fraunces + Geist, navy `#0A1628`), fully independent of the commission funnel pages.
+
+| Path | Purpose | Pixel events |
+|---|---|---|
+| `/geo-audit` | Landing page (cold Meta traffic) | `PageView` only |
+| `/geo-audit/thanks` | Qualified Typeform redirect, Calendly embed | `PageView` + `LeadGEOUK` (trackCustom) |
+| `/geo-audit/not-a-fit` | Disqualified Typeform redirect | `PageView` only |
+
+`LeadGEOUK` is a custom event, deliberately separate from the commission funnel's `Lead` event so the two Meta audiences never mix. It fires **only** on `/geo-audit/thanks`.
+
+**Before launch:**
+1. Create the GEO Typeform (5 questions with gate logic; see campaign brief) and replace `TYPEFORM_URL` at the top of `geo-audit/index.html`.
+2. Set Typeform redirects: qualified → `https://it.getelevateleads.com/geo-audit/thanks`, disqualified → `https://it.getelevateleads.com/geo-audit/not-a-fit`.
+3. Confirm the delivery-time answer in the FAQ ("You will have the findings within a week.") — flagged with a TODO comment in `geo-audit/index.html`.
+4. Zapier: Typeform → ClickUp list "IT - UK - GEO" (separate from "IT - UK - Commision") + Slack alert. Flag free email domains in the Zapier step.
+
+UTM parameters on the landing page URL are appended to the Typeform link automatically.
+
 ## Duplicating for Other Verticals
 
 1. Copy the entire repository
