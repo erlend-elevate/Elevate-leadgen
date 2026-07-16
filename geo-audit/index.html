@@ -15,7 +15,7 @@
 
 <script>
   // TYPEFORM_URL: single source of truth for every CTA on this page.
-  var TYPEFORM_URL = 'https://form.typeform.com/to/01KXJGKWVA8SF7EPJEQNKQGPHB';
+  var TYPEFORM_URL = 'https://form.typeform.com/to/Ps2ivRIT';
 </script>
 
 <!-- Meta Pixel Code -->
@@ -210,13 +210,14 @@ src="https://www.facebook.com/tr?id=1466790598245604&ev=PageView&noscript=1"
 
 <script>
 // Wire every CTA to the Typeform URL, passing through UTM parameters as hidden fields.
+// Typeform reads hidden fields from the hash fragment only, so UTMs are appended after '#'.
 (function () {
   var params = new URLSearchParams(window.location.search);
   var utm = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
     .filter(function (k) { return params.get(k); })
     .map(function (k) { return k + '=' + encodeURIComponent(params.get(k)); })
     .join('&');
-  var url = utm ? TYPEFORM_URL + (TYPEFORM_URL.indexOf('?') === -1 ? '?' : '&') + utm : TYPEFORM_URL;
+  var url = utm ? TYPEFORM_URL + '#' + utm : TYPEFORM_URL;
   document.querySelectorAll('.js-tf').forEach(function (el) { el.setAttribute('href', url); });
 })();
 </script>
