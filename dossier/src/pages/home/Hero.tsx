@@ -114,7 +114,7 @@ function PromptSimulator({ started }: { started: boolean }) {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: 'url(/hero-texture.png)' }}
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}hero-texture.png)` }}
         />
         {/* Question chips */}
         <div className="relative z-10 mb-4 flex flex-wrap gap-2">

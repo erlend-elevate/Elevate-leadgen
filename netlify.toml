@@ -18,8 +18,26 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# The Visibility Dossier source (dossier/) belongs to a separate Netlify site
-# (base directory dossier/). Never serve its raw source files on this site:
+# The Visibility Dossier SPA is served at /audit/ (prebuilt output committed in
+# audit/ — rebuild via: cd dossier && npm run build && cp -r dist ../audit).
+# SPA fallback: unknown /audit/* paths serve the app shell (existing files win).
+[[redirects]]
+  from = "/audit/*"
+  to = "/audit/index.html"
+  status = 200
+
+[[headers]]
+  for = "/audit/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/audit/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# The Visibility Dossier source (dossier/) is the source for /audit/ above.
+# Never serve its raw source files on this site:
 [[redirects]]
   from = "/dossier/*"
   to = "/404"
