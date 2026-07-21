@@ -1,0 +1,17 @@
+# Netlify config for "The Visibility Dossier" (separate Netlify site).
+# Site settings: base directory = dossier/ — then this file is picked up
+# and build/publish paths below are relative to dossier/.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback is handled by public/_redirects (/* /index.html 200),
+# which Vite copies into dist/ at build time.
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
