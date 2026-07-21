@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router'
 import { scrollToTarget, setPendingAnchor } from '@/lib/lenis'
 import { useNavigate } from 'react-router'
+import { typeformUrl } from '@/lib/typeform'
 
 /** Dossier footer (design.md §7.2) — navy, all pages. */
 export default function Footer() {
@@ -34,16 +35,8 @@ export default function Footer() {
             </Link>
           ) : (
             <a
-              href="#form"
+              href={typeformUrl()}
               data-event="cta_footer"
-              onClick={(e) => {
-                e.preventDefault()
-                if (pathname === '/') scrollToTarget('#form')
-                else {
-                  setPendingAnchor('#form')
-                  navigate('/')
-                }
-              }}
               className="group inline-flex h-12 items-center border-2 border-ink bg-orange px-6 font-sans text-[15px] font-bold tracking-[0.02em] text-ink shadow-[4px_4px_0_rgba(0,212,170,.4)] transition-all [transition-duration:.18s] ease-snap hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[0_0_0_rgba(0,212,170,0)] active:scale-[0.98]"
             >
               Get My Free Audit <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>

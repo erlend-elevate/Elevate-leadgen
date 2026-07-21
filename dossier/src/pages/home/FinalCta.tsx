@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import Stamp from '@/components/Stamp'
 import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap'
-import { scrollToTarget } from '@/lib/lenis'
+import { typeformUrl } from '@/lib/typeform'
 
 /** S10 — Final CTA "Closing Statement" (navy, full-bleed). */
 export default function FinalCta() {
@@ -46,12 +46,6 @@ export default function FinalCta() {
     { scope: root },
   )
 
-  const goForm = (e: React.MouseEvent) => {
-    e.preventDefault()
-    scrollToTarget('#form')
-    window.setTimeout(() => document.getElementById('af-firstName')?.focus({ preventScroll: true }), 1500)
-  }
-
   return (
     <section
       ref={root}
@@ -82,9 +76,8 @@ export default function FinalCta() {
         </p>
         <div className="fc-btn relative mt-12 flex items-center gap-6">
           <a
-            href="#form"
+            href={typeformUrl()}
             data-event="cta_final"
-            onClick={goForm}
             className="group inline-flex h-14 items-center border-2 border-ink bg-orange px-8 font-sans text-[15px] font-bold tracking-[0.02em] text-ink shadow-[4px_4px_0_rgba(0,212,170,.4)] transition-all [transition-duration:.18s] ease-snap hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[0_0_0_rgba(0,212,170,0)] active:scale-[0.98] motion-safe:animate-pulse-ring"
           >
             Get My Free Audit{' '}

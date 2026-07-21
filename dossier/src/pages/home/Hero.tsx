@@ -3,10 +3,10 @@ import { Link } from 'react-router'
 import { motion } from 'framer-motion'
 import ConsoleCard from '@/components/ConsoleCard'
 import { gsap, useGSAP, prefersReducedMotion } from '@/lib/gsap'
-import { scrollToTarget } from '@/lib/lenis'
 import { useTypewriter } from '@/hooks/useTypewriter'
 import { PRELOADER_EXIT_EVENT, preloaderWillShow } from '@/lib/preloader'
 import { cn } from '@/lib/utils'
+import { typeformUrl } from '@/lib/typeform'
 
 const CASE_TAG = 'CASE FILE Nº 001 — AI VISIBILITY ASSESSMENT'
 
@@ -314,12 +314,8 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a
-              href="#form"
+              href={typeformUrl()}
               data-event="cta_primary_hero"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToTarget('#form')
-              }}
               className="hero-cta group inline-flex h-14 items-center border-2 border-ink bg-orange px-7 font-sans text-[15px] font-bold tracking-[0.02em] text-ink shadow-[4px_4px_0_var(--ink)] transition-all [transition-duration:.18s] ease-snap hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[0_0_0_var(--ink)] active:scale-[0.98]"
             >
               Get My Free Audit <span aria-hidden="true" className="ml-2 transition-transform duration-200 group-hover:translate-x-1">→</span>
