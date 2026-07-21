@@ -75,13 +75,12 @@ recipes, anti-slop rules) + one doc per page. **Implement faithfully — exact c
 
 ## 7. Remaining work before launch (priority order)
 
-1. **Wire the form.** `FORM 06` (in `src/pages/home/`) POSTs JSON to `/api/audit-request` and currently tolerates
-   404 (inline success state shows anyway). Choose one:
-   - **Easiest — Netlify Forms**: add `data-netlify="true"` + hidden `form-name` input, point the action at `/`.
-   - **Netlify Function** → forward to email/CRM webhook (e.g. Klaviyo, HubSpot, Slack).
-   - Keep `/api/audit-request` and proxy it elsewhere.
-   After wiring, decide: keep inline success, OR redirect to `/thank-you` (pass `email`/`ref` via router state —
-   `ThankYou.tsx` already consumes it). Fields + validation copy are specced in `design/home.md` §FORM 06.
+1. ~~Wire the form.~~ **DONE (July 2026): the embedded form was replaced by CTA link-outs to Typeform.**
+   All primary CTAs link to `TYPEFORM_URL` in `src/lib/typeform.ts` (`https://form.typeform.com/to/Ps2ivRIT`),
+   with UTM parameters passed as a hash fragment (Typeform reads hidden fields from the hash only).
+   The Typeform handles qualification and redirects: qualified → `/geo-audit/thanks` (fires `LeadGEOUK`),
+   disqualified → `/geo-audit/not-a-fit`. `ThankYou.tsx` (`/thank-you`) is currently unused in the flow.
+   The old embedded-form spec remains in `design/home.md` §FORM 06 if the inline form is ever revived.
 2. **Analytics.** CTA/form elements carry `data-event` (`cta_primary_hero`, `cta_secondary_hero`, `form_submit`,
    `sample_report_view`, …). Add GA4/Meta Pixel **behind a consent banner** — none is shipped, and UK GDPR/PECR
    requires one before any marketing pixel fires.

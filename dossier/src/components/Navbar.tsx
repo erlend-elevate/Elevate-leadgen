@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
 import { scrollToTarget, setPendingAnchor, stopScroll, startScroll } from '@/lib/lenis'
 import { cn } from '@/lib/utils'
+import { typeformUrl } from '@/lib/typeform'
 
 const NAV_LINKS = [
   { label: 'The Problem', hash: '#exhibit-a' },
@@ -137,8 +138,7 @@ export default function Navbar() {
             Sample Report ↗
           </Link>
           <a
-            href="#form"
-            onClick={goAnchor('#form')}
+            href={typeformUrl()}
             data-event="cta_nav"
             className={cn(
               'inline-flex h-10 items-center border-2 border-ink bg-orange px-4 font-sans text-[13px] font-bold tracking-[0.02em] text-ink',
@@ -212,8 +212,7 @@ export default function Navbar() {
                 className="mt-6 border-t border-line-navy pt-6"
               >
                 <a
-                  href="#form"
-                  onClick={goAnchor('#form')}
+                  href={typeformUrl()}
                   className="inline-flex h-12 items-center border-2 border-ink bg-orange px-6 font-sans text-[15px] font-bold text-ink shadow-[4px_4px_0_rgba(0,212,170,.4)]"
                 >
                   Get My Free Audit →
