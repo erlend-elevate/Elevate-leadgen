@@ -62,7 +62,7 @@ export default function FinalCta() {
       <div
         aria-hidden="true"
         className="fc-bg absolute inset-0 bg-cover bg-center opacity-50"
-        style={{ backgroundImage: 'url(/hero-texture.png)' }}
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}hero-texture.png)` }}
       />
       <div className="grain-screen" aria-hidden="true" />
       <div className="relative mx-auto flex max-w-[1200px] flex-col items-center px-6 py-[120px] text-center lg:px-12 lg:py-40">

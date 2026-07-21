@@ -109,7 +109,7 @@ export default function Navbar() {
     >
       <nav aria-label="Primary" className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-6 lg:px-12">
         <Link to="/" aria-label="Elevate Marketing — home" className="flex shrink-0 items-center">
-          <img src={dark ? '/logo-inverse.svg' : '/logo.svg'} alt="Elevate Marketing" width={240} height={48} className="h-8 w-auto md:h-9" />
+          <img src={import.meta.env.BASE_URL + (dark ? 'logo-inverse.svg' : 'logo.svg')} alt="Elevate Marketing" width={240} height={48} className="h-8 w-auto md:h-9" />
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">

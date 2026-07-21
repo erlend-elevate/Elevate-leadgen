@@ -7,7 +7,7 @@ import App from './App.tsx'
 // No <React.StrictMode> — it double-runs canvas/GSAP effects (react-dev.md).
 createRoot(document.getElementById('root')!).render(
   <HelmetProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <App />
     </BrowserRouter>
   </HelmetProvider>,

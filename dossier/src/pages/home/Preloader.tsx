@@ -72,7 +72,7 @@ export default function Preloader() {
           </p>
         ))}
       </div>
-      <img src="/logo-mark.svg" alt="" width={32} height={32} className="absolute bottom-6 right-6 opacity-50" />
+      <img src={`${import.meta.env.BASE_URL}logo-mark.svg`} alt="" width={32} height={32} className="absolute bottom-6 right-6 opacity-50" />
     </div>
   )
 }

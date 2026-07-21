@@ -84,7 +84,7 @@ export default function Cover() {
     <div ref={root} className="sr-cover">
       {/* Document header strip */}
       <div className="flex items-center justify-between border-b border-line-paper px-5 py-3 md:px-8">
-        <img src="/logo-mark.svg" alt="" width={28} height={28} className="h-7 w-7" />
+        <img src={`${import.meta.env.BASE_URL}logo-mark.svg`} alt="" width={28} height={28} className="h-7 w-7" />
         <p className="font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-ink-soft">
           ELEVATE MARKETING — GEO UNIT
         </p>

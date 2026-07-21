@@ -80,7 +80,7 @@ export default function Footer() {
             <p className="mt-4 font-mono text-[12px] leading-relaxed text-paper-on-navy/60">
               GEO audits for UK IT companies. 48-hour turnaround, zero obligation.
             </p>
-            <img src="/logo-mark.svg" alt="" width={32} height={32} className="mt-6 opacity-70" />
+            <img src={`${import.meta.env.BASE_URL}logo-mark.svg`} alt="" width={32} height={32} className="mt-6 opacity-70" />
           </div>
         </div>
 
