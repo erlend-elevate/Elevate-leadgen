@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The Visibility Dossier tokens (design.md §2) */
+    --paper: #F2EEE5;
+    --paper-2: #E8E2D2;
+    --ink: #1A1A2E;
+    --ink-soft: #4A4A5E;
+    --navy: #0A2540;
+    --navy-deep: #051729;
+    --teal: #00D4AA;
+    --teal-aa: #0B6B57;
+    --orange: #FF6B35;
+    --orange-aa: #B43E18;
+    --paper-on-navy: #EDEAE0;
+    --line-paper: rgba(26,26,46,.16);
+    --line-navy: rgba(237,234,224,.14);
+
+    /* shadcn compatibility (mapped to dossier palette) */
+    --background: 42 30% 92%;
+    --foreground: 240 28% 14%;
+    --card: 42 30% 92%;
+    --card-foreground: 240 28% 14%;
+    --popover: 42 30% 92%;
+    --popover-foreground: 240 28% 14%;
+    --primary: 16 100% 60%;
+    --primary-foreground: 240 28% 14%;
+    --secondary: 44 26% 86%;
+    --secondary-foreground: 240 28% 14%;
+    --muted: 44 26% 86%;
+    --muted-foreground: 236 12% 33%;
+    --accent: 44 26% 86%;
+    --accent-foreground: 240 28% 14%;
+    --destructive: 16 55% 41%;
+    --destructive-foreground: 42 30% 92%;
+    --border: 240 28% 14%;
+    --input: 240 28% 14%;
+    --ring: 168 100% 42%;
+    --radius: 0.125rem;
+    --sidebar-background: 42 30% 92%;
+    --sidebar-foreground: 240 28% 14%;
+    --sidebar-primary: 16 100% 60%;
+    --sidebar-primary-foreground: 240 28% 14%;
+    --sidebar-accent: 44 26% 86%;
+    --sidebar-accent-foreground: 240 28% 14%;
+    --sidebar-border: 240 28% 14%;
+    --sidebar-ring: 168 100% 42%;
+  }
+
+  * {
+    border-color: var(--line-paper);
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis owns smoothing */
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  .font-serif {
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: var(--teal);
+    color: var(--navy-deep);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  .on-navy :focus-visible,
+  .on-navy:focus-visible {
+    outline-color: var(--orange);
+  }
+
+  /* Thin scrollbars stay dossier */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--paper-2); }
+  ::-webkit-scrollbar-thumb { background: var(--ink); border: 2px solid var(--paper-2); }
+}
+
+@layer utilities {
+  /* Tabular numbers for stats/counters (design.md §3) */
+  .tnum { font-feature-settings: "tnum"; }
+
+  /* Archivo Expanded (width axis) for stamps/eyebrows */
+  .expanded { font-stretch: 125%; }
+
+  /* Console vignette: navy → navy-deep + faint blueprint grid (design.md §5) */
+  .console-vignette {
+    background-color: var(--navy);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,212,170,.04) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, rgba(0,212,170,.04) 0 1px, transparent 1px 48px),
+      radial-gradient(120% 90% at 50% 0%, var(--navy) 0%, var(--navy-deep) 100%);
+  }
+
+  /* Headline line masks (design.md §3) */
+  .mask-line { display: block; overflow: hidden; }
+  .mask-inner { display: block; will-change: transform; }
+
+  /* Footer link underline sweep (design.md §7.2) */
+  .underline-sweep {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size .3s cubic-bezier(.77,0,.18,1);
+  }
+  .underline-sweep:hover,
+  .underline-sweep:focus-visible { background-size: 100% 1px; }
+
+  /* Stamp double border (2px solid + inner 1px offset 3px) */
+  .stamp-double { position: relative; }
+  .stamp-double::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid currentColor;
+    pointer-events: none;
+  }
+
+  /* Folded corner for DocCard (24px triangle + 1px crease) */
+  .doc-fold { position: relative; }
+  .doc-fold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(225deg, var(--paper) 0 50%, rgba(26,26,46,.18) 50% 100%);
+    border-left: 1px solid var(--line-paper);
+    transition: background .25s ease;
+  }
+  .doc-fold:hover::before {
+    background: linear-gradient(225deg, var(--paper) 0 50%, rgba(26,26,46,.32) 50% 100%);
+  }
+  .doc-fold-navy::before {
+    background: linear-gradient(225deg, var(--navy-deep) 0 50%, rgba(0,212,170,.28) 50% 100%);
+    border-left: 1px solid var(--line-navy);
+  }
+
+  /* Global grain overlay (design.md §5) — static feTurbulence */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: .04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .grain-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: .05;
+    mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Vertical margin note */
+  .writing-vertical { writing-mode: vertical-rl; }
+}
+
+@layer base {
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-drift-bg { animation: none !important; }
+  }
+}
+
+@layer utilities {
+  /* Chain-of-custody: hovered step highlights its dashed segment (dash march) */
+  .ed-step:hover .ed-rail,
+  .ed-step:focus-within .ed-rail {
+    stroke: var(--teal);
+    animation: dash-march 1s linear infinite;
+  }
+  @keyframes dash-march {
+    to { stroke-dashoffset: -0.03; }
+  }
+
+  /* Hero simulator: first chip invitation pulse + verdict redaction wipe */
+  .chip-invite {
+    animation: chip-pulse 1.1s cubic-bezier(.22,.9,.24,1) 2;
+  }
+  @keyframes chip-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); border-color: var(--teal); }
+  }
+  .verdict-bar {
+    animation: verdict-wipe .7s cubic-bezier(.77,0,.18,1) .35s forwards;
+  }
+  @keyframes verdict-wipe {
+    to { transform: scaleX(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-invite { animation: none !important; }
+  .verdict-bar { animation: none !important; transform: scaleX(0); }
+}
+
+@layer utilities {
+  /* Loading state animated ellipsis: FILING REQUEST… */
+  .ellipsis::after {
+    content: '';
+    animation: ellipsis 1s steps(4) infinite;
+  }
+  @keyframes ellipsis {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '…'; }
+  }
+}

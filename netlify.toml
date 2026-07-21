@@ -18,6 +18,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# The Visibility Dossier source (dossier/) belongs to a separate Netlify site
+# (base directory dossier/). Never serve its raw source files on this site:
+[[redirects]]
+  from = "/dossier/*"
+  to = "/404"
+  status = 404
+
 # Nevari client proposal (served at /nevari/). Keep it out of search indexes:
 # it contains commercial terms and must not be indexable.
 [[headers]]
